@@ -21,13 +21,43 @@ class BaseClass:
             with open(file, "r") as f:
                 saved_data = json.load(f)
         else:
-            saved_data = []
+            saved_data = {}
         saved_data[self.id] = self.__dict__
 
         with open(file, "w") as f:
             json.dump(saved_data, f, indent=4, default=str)
 
         print(f"{self.__class__.__name__} saved to {file}")
+
+    def remove_json(self):
+        file = f"{self.__class__.__name__.lower()}s.json"
+        if os.path.exists(file):
+            with open(file, "r") as f:
+                saved_data = json.load(f)
+            if self.id in saved_data:
+                del saved_data[self.id]
+                with open(file, "w") as f:
+                    json.dump(saved_data, f, indent=4, default=str)
+                print(f"{self.__class__.__name__} removed from {file}")
+            else:
+                print(f"{self.__class__.__name__} not found in {file}")
+        else:
+            print(f"{file} does not exist.")
+
+    @classmethod
+    def getting_json(class_name):
+        file = f"{class_name.__name__.lower()}s.json"
+        get_object = []
+        if os.path.exists(file):
+            with open(file, "r") as f:
+                saved_data = json.load(f)
+            for object_id, data in saved_data.items():
+                obj = class_name.__new__(class_name)
+                obj.__dict__.update(data)
+                get_object.append(obj)
+            return get_object
+        else:
+            print(f"{file} does not exist.")
 
 
 class Book(BaseClass):

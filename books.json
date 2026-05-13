@@ -1,46 +1,8 @@
 {
-    "id": 140008429686288,
-    "created_at": "2026-05-13 10:48:26.853537",
-    "updated_at": "2026-05-13 10:48:26.853941",
-    "title": "The Power of Habit",
-    "author": "Charles Duhigg",
-    "genre": "self-help",
-    "year": 2012,
-    "is_borrow": false,
-    "139830197006224": {
-        "id": "139830197006224",
-        "created_at": "2026-05-13 11:03:27.294450",
-        "updated_at": "2026-05-13 11:03:27.294478",
-        "title": "Make Time",
-        "author": "Steve",
-        "genre": "deveoplment",
-        "year": 2025,
-        "is_borrow": false
-    },
-    "139785255055248": {
-        "id": "139785255055248",
-        "created_at": "2026-05-13 11:04:54.274321",
-        "updated_at": "2026-05-13 11:04:54.274352",
-        "title": "Make Time",
-        "author": "Steve",
-        "genre": "deveoplment",
-        "year": 2025,
-        "is_borrow": false
-    },
-    "140607785316240": {
-        "id": "140607785316240",
-        "created_at": "2026-05-13 11:04:56.940677",
-        "updated_at": "2026-05-13 11:04:56.940709",
-        "title": "Make Time",
-        "author": "Steve",
-        "genre": "deveoplment",
-        "year": 2025,
-        "is_borrow": false
-    },
-    "140020534521744": {
-        "id": "140020534521744",
-        "created_at": "2026-05-13 11:05:00.741414",
-        "updated_at": "2026-05-13 11:05:00.741464",
+    "140502124507024": {
+        "id": "140502124507024",
+        "created_at": "2026-05-13 11:24:21.867056",
+        "updated_at": "2026-05-13 11:24:21.867080",
         "title": "Make Time",
         "author": "Steve",
         "genre": "deveoplment",
