@@ -19,7 +19,10 @@ class BaseClass:
 
         if os.path.exists(file):
             with open(file, "r") as f:
-                saved_data = json.load(f)
+                try:
+                    saved_data = json.load(f)
+                except json.JSONDecodeError:
+                    saved_data = {}
         else:
             saved_data = {}
         saved_data[self.id] = self.__dict__
