@@ -3,6 +3,7 @@
 # the json it will be one for book and for the user
 
 import datetime
+import json
 
 
 class BaseClass:
@@ -13,6 +14,13 @@ class BaseClass:
 
     def save_json(self):
         self.updated_at = datetime.datetime.now()
+        file = f"{self.__class__.__name__.lower()}s.json"
+        saved_data = self.__dict__
+
+        with open(file, "w") as f:
+            json.dump(saved_data, f, indent=4, default=str)
+
+        print(f"{self.__class__.__name__} saved to {file}")
 
 
 class Book(BaseClass):
@@ -40,5 +48,8 @@ class User(BaseClass):
 book1 = Book("Make Time", "Steve", "deveoplment", 2025)
 user1 = User("Alex")
 
+
 book1.save_json()
+user1.save_json()
+
 # user1.borrowing(book1)
