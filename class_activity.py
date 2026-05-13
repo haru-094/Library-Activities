@@ -4,18 +4,25 @@
 
 import datetime
 import json
+import os
 
 
 class BaseClass:
     def __init__(self):
-        self.id = id(self)
+        self.id = str(id(self))
         self.created_at = datetime.datetime.now()
         self.updated_at = datetime.datetime.now()
 
     def save_json(self):
         self.updated_at = datetime.datetime.now()
         file = f"{self.__class__.__name__.lower()}s.json"
-        saved_data = self.__dict__
+
+        if os.path.exists(file):
+            with open(file, "r") as f:
+                saved_data = json.load(f)
+        else:
+            saved_data = []
+        saved_data[self.id] = self.__dict__
 
         with open(file, "w") as f:
             json.dump(saved_data, f, indent=4, default=str)
@@ -35,6 +42,7 @@ class Book(BaseClass):
 
 class User(BaseClass):
     def __init__(self, name):
+        super().__init__()
         self.name = name
 
     def borrowing(self, book):
@@ -47,9 +55,8 @@ class User(BaseClass):
 
 book1 = Book("Make Time", "Steve", "deveoplment", 2025)
 user1 = User("Alex")
+book2 = Book("The Power of Habit", "Charles Duhigg", "self-help", 2012)
 
 
 book1.save_json()
 user1.save_json()
-
-# user1.borrowing(book1)
